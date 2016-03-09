@@ -31,6 +31,7 @@ libraryDependencies ++= Seq(
   "org.avaje.ebeanorm" % "avaje-ebeanorm" % "6.14.1",
   "com.google.inject" % "guice" % "4.0",
   "javax.inject" % "javax.inject" % "1",
+  "org.reactivemongo" % "play2-reactivemongo_2.11" % "0.11.7.play24",
   "org.webjars" % "bootstrap" % "3.3.6",
   "org.webjars" % "angularjs" % "1.3.15",
   "org.webjars" % "angular-ui-bootstrap" % "0.13.0",

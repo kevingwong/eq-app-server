@@ -1,6 +1,6 @@
 @(message: String)
 
-@main("") {
+@app(message) {
     
     <script src='@routes.Assets.versioned("javascripts/index.js")'></script>
 
@@ -17,6 +17,11 @@
     <br/><br/>
     
     <button id="websocket-demo">Send WebSocket Message</button>
-    
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12" ng-view></div>
+        </div>
+    </div>
 
 }

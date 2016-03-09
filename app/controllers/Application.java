@@ -17,11 +17,11 @@ import static play.libs.F.Promise;
 public class Application extends Controller {
 
     public Result index() {
-        return ok(views.html.index.render("Hello Play Framework"));
+        return ok(views.html.index.render("Enduraquest"));
     }
 
     public Result main() {
-        return ok(views.html.main.render("Play Framework", Html.apply("Some sample content")));
+        return ok(views.html.app.render("Enduraquest", Html.apply("Some sample content")));
     }
 
     public Result syncFoo() {
