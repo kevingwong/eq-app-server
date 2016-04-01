@@ -6,11 +6,13 @@ import play.data.validation.Constraints;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Created by wongk523 on 3/3/16.
  */
 @Entity
+@Table(name="user")
 public class UserModel extends Model {
     @Id
     public Long id;

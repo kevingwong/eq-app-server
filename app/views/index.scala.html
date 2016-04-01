@@ -1,7 +1,4 @@
-@(message: String)
-
-@app(message) {
-    
+@app {
     <script src='@routes.Assets.versioned("javascripts/index.js")'></script>
 
     <ul>
@@ -23,5 +20,4 @@
             <div class="col-sm-12" ng-view></div>
         </div>
     </div>
-
 }

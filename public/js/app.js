@@ -1,7 +1,7 @@
 (function() {
     var app, dependencies;
 
-    dependencies = ['ngRoute', 'ui.bootstrap',
+    dependencies = ['ngRoute', 'ngCookies', 'ui.bootstrap',
         'myApp.filters',
         'myApp.services',
         'myApp.controllers',
@@ -11,10 +11,12 @@
 
     app = angular.module('myApp', dependencies);
 
-    angular.module('myApp.routeConfig', ['ngRoute']).config([
+    angular.module('myApp.routeConfig', ['ngRoute', 'ngCookies']).config([
         '$routeProvider', function($routeProvider) {
             return $routeProvider.when('/', {
                 templateUrl: '/assets/partials/view.html'
+            }).when('/login', {
+                templateUrl: '/assets/partials/login.html'
             }).when('/users/create', {
                 templateUrl: '/assets/partials/create.html'
             }).when('/users/edit/:firstName/:lastName', {
@@ -33,7 +35,7 @@
     ]);
 
     this.commonModule = angular.module('myApp.common', []);
-    this.controllersModule = angular.module('myApp.controllers', []);
+    this.controllersModule = angular.module('myApp.controllers', ['ngCookies']);
     this.servicesModule = angular.module('myApp.services', []);
     this.modelsModule = angular.module('myApp.models', []);
     this.directivesModule = angular.module('myApp.directives', []);

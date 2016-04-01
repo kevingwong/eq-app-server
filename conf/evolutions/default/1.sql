@@ -1,19 +1,16 @@
-# --- Created by Ebean DDL
-# To stop Ebean DDL generation, remove this comment and start using Evolutions
+# Users schema
 
 # --- !Ups
 
-create table user_model (
-  id                            bigint auto_increment not null,
-  email                         varchar(255),
-  password                      varchar(255),
-  fullname                      varchar(255),
-  isadmin                       tinyint(1) default 0,
-  constraint pk_user_model primary key (id)
+CREATE TABLE User (
+    id bigint(20) NOT NULL AUTO_INCREMENT,
+    email varchar(255) NOT NULL,
+    password varchar(255) NOT NULL,
+    fullname varchar(255) NOT NULL,
+    isAdmin boolean NOT NULL,
+    PRIMARY KEY (id)
 );
-
 
 # --- !Downs
 
-drop table if exists user_model;
-
+DROP TABLE User;

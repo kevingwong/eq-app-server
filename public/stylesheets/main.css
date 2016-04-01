@@ -1,10 +1,44 @@
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
-
 body {
-    padding-bottom: 30px;
-    min-width: 970px;
+    background-color: #BBC6F3;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: compact;
+    @media (min-width: @screen-sm-min)
 }
 
-footer {
-    text-align: center;
+.form-signin {
+    max-width: 330px;
+    padding-top: 130px;
+    margin: 0 auto;
+    background: url(/assets/images/wa_header.png);
+    background-repeat:no-repeat;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }

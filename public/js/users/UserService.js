@@ -54,6 +54,27 @@
             return deferred.promise;
         };
 
+        UserService.prototype.login = function(username, password) {
+            var deferred;
+            this.$log.debug("login; username:" + username + " password:" + password);
+            deferred = this.$q.defer();
+            var postNode = {};
+            postNode.username = username;
+            postNode.password = password;
+            this.$http.post('/login', postNode).success((function(_this) {
+                return function(data, status, headers) {
+                    _this.$log.info("Successful login - status " + status);
+                    return deferred.resolve(data);
+                };
+            })(this)).error((function(_this) {
+                return function(data, status, headers) {
+                    _this.$log.error("Failed login - status " + status);
+                    return deferred.reject(data);
+                };
+            })(this));
+            return deferred.promise;
+        };
+
         UserService.prototype.updateUser = function(firstName, lastName, user) {
             var deferred;
             this.$log.debug("updateUser " + (angular.toJson(user, true)));

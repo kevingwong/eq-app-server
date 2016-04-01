@@ -4,6 +4,8 @@
 
 GET        /                              @controllers.Application.index()
 GET        /main                          @controllers.Application.main()
+GET        /login                         @controllers.Application.loginGet()
+POST       /login                         @controllers.Application.loginPost()
 
 GET        /sync-foo                      @controllers.Application.syncFoo()
 GET        /async-foo                     @controllers.Application.asyncFoo()

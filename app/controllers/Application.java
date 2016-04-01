@@ -1,9 +1,14 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.UserModel;
+import play.Logger;
 import play.libs.EventSource;
 import play.libs.ws.WS;
 import play.libs.ws.WSResponse;
+import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.WebSocket;
@@ -17,11 +22,40 @@ import static play.libs.F.Promise;
 public class Application extends Controller {
 
     public Result index() {
-        return ok(views.html.index.render("Enduraquest"));
+        return ok(views.html.index.render());
     }
 
     public Result main() {
-        return ok(views.html.app.render("Enduraquest", Html.apply("Some sample content")));
+        return ok(views.html.app.render(Html.apply("Some sample content")));
+    }
+
+    public Result loginGet() {
+        return ok(views.html.login.render());
+    }
+
+    @BodyParser.Of(BodyParser.Json.class)
+    public Promise<Result> loginPost() {
+        return Promise.promise(() -> {
+            if (!request().method().equalsIgnoreCase("POST"))
+                return forbidden();
+
+            final JsonNode reqNode = request().body().asJson();
+            final String usernameQuery = reqNode.get("username").asText();
+            final String passwordQuery = reqNode.get("password").asText();
+
+            Logger.error("loginPost; Username:" + usernameQuery + " password:" + passwordQuery);
+
+            List<UserModel> list = UserModel.find.where().eq("email", usernameQuery).findList();
+            if (list == null || list.size() != 1)
+                return notFound();
+
+            // create session object
+
+            ObjectNode node = new ObjectMapper().createObjectNode()
+                    .put("session", "abc123");
+
+            return ok(node);
+        });
     }
 
     public Result syncFoo() {
